@@ -24,6 +24,61 @@ public class Room extends Fixture{
 		return this.exits;
 	}
 	
+	// set the value of a single exit
+	public void setExit(int cardinal, int leftOrRight,Room room) {
+		this.exits[cardinal][leftOrRight] = room;
+	}
+	
+	// automatically fill the rooms with null or Room values. instead 
+	// of assigning exits one at a time
+	// THE LENGTH OF ROOMS AND DIRECTIONS HAS TO BE THE SAME AND THEIR 
+	// INDICES SHOULD BE RESPECTIVE
+	// [TODO] input validation
+	public void fillExits(Room[] rooms, String... directions) {
+		for (int i = 0; i < directions.length; i++) {
+			switch(directions[i]) {
+				case("NL"): // allow fall through for same functionality
+				case("N"): {
+					this.exits[0][0] = rooms[i];
+					break;
+				}
+				case("EL"):
+				case("E"):  {
+					this.exits[1][0] = rooms[i];
+					break;
+				}
+				case("SL"):
+				case("S"): {
+					this.exits[2][0] = rooms[i];
+					break;
+				}
+				case("WL"):
+				case("W"): {
+					this.exits[3][0] = rooms[i];
+					break;
+				}
+				case("NR"): {
+					this.exits[0][1] = rooms[i];
+					break;
+				}
+				case("ER"): {
+					this.exits[1][1] = rooms[i];
+					break;
+				}
+				case("SR"): {
+					this.exits[2][1] = rooms[i];
+					break;
+				}
+				case("WR"): {
+					this.exits[3][1] = rooms[i];
+					break;
+				}
+				default:
+					break;
+			}
+		}
+	}
+	
 	// [TODO]
 	// potentially make a directionToInt method
 	
