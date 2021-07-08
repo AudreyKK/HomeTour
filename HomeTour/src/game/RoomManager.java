@@ -1,5 +1,11 @@
 package game;
 
-public class RoomManager {
+import fixtures.Room;
 
+public class RoomManager {
+	
+	// Starting state
+	Room startingRoom;
+
+	Room[] rooms;
 }
