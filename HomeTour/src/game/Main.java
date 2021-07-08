@@ -39,7 +39,7 @@ public class Main {
 	
 	//
 	static void printRoom(Player player) {
-		System.out.println("play on player")
+		System.out.println("play on player");
 	}
 	
 	//
