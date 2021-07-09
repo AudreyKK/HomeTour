@@ -9,39 +9,38 @@ public class Main {
 	private static boolean running = true;
 	
 	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
 		RoomManager rm = new RoomManager();
 		Player p = new Player();
 		Parser parser = new Parser();
 		
 		rm.mapInitializer();
-		p.currentRoom = rm.startingRoom;
+		p.setCurrentRoom(rm.startingRoom);
 		
 		while(running) {
 			
 			printRoom(p); // display state
-			String[] input = collectInput(); // collect input
-			// process input
+			String[] input = collectInput(sc); // collect input
+			Parser.parse(input, p);// process input
 			// update state
 			// repeat 
 			
-			running = false;
 			
 		}
+		sc.close();
 	}
 	
 	//
 	static void printRoom(Player player) {
-		System.out.println(player.currentRoom.getShortDescription());
+		System.out.println(player.getCurrentRoom().getShortDescription());
 	}
 	
 	//
-	private static String[] collectInput() {
-		Scanner sc = new Scanner(System.in);
+	private static String[] collectInput(Scanner s) {
 		String[] input = new String[8];
 		
-		input = sc.nextLine().split("\\s");
+		input = s.nextLine().split("\\s");
 		
-		sc.close();
 		return input;
 	}
 	
