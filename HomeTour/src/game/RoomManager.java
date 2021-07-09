@@ -23,7 +23,7 @@ public class RoomManager {
 				"A small bedroom with one window.",
 				"A small bedroom, there are several plants and a futon \n" + 
 						"folded neatly against the wall. A single window faces\n" +
-						"east and a door faces west. There is a mess desk by the \n" +
+						"east and a door faces west. There is a messy desk by the \n" +
 						"south wall.",
 				new String[] {"W"}
 				);
@@ -113,7 +113,7 @@ public class RoomManager {
 				"A front porch facing a busy street.",
 				"Large rhododendron bushes and sunflowers obscure the porch from \n" + 
 				"the street. There are a couple comfortable chairs to sit in and \n" +
-						"a windchime hangs overhead."),
+						"a windchime hangs overhead.",
 				new String[] {"W"}
 		);
 		
@@ -152,13 +152,19 @@ public class RoomManager {
 		Room[] foyerExits = foyer.roomArray(porch, upstairsLanding);
 		foyer.fillExits(foyerExits, foyer.getCardinalExits());
 		
+		Room[] kitchenExits = kitchen.roomArray(bathroom, livingRoom);
+		kitchen.fillExits(kitchenExits, kitchen.getCardinalExits());
+		
+		Room[] porchExits = porch.roomArray(foyer);
+		porch.fillExits(porchExits, porch.getCardinalExits());
+		
 		
 		// create objects
 		Window window = new Window(
 				"window", 
 				"A window.", 
-				"You can see a cat sitting in the window of the neighboring " +
-					"building.");
+				"You can see a large cat sitting in the window of the neighboring " +
+					"building. She is watching the birds and ignoring you.");
 		
 		// put the objects in the rooms
 		livingRoom.setStuff(window);
