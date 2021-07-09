@@ -1,51 +1,43 @@
 package game;
 
 import java.util.Scanner;
+import game.Player;
+import game.RoomManager;
 
 public class Main {
 	
 	public static void main(String[] args) {
 		boolean running = true;
+		RoomManager rm = new RoomManager();
+		Player p = new Player();
+		
+		rm.mapInitializer();
+		p.currentRoom = rm.startingRoom;
 		
 		while(running) {
 			
-			// The core logic is that the game will describe the player's 
-			// surroundings and then wait for the player's input. And this will
-			// repeat until the game is quit.
-			// the loop should have a boolean that only quits if player types
-			// "quit" then there should be an "if hasNext, getNext, if quit,
-			// then quit, otherwise do other functionality.
-			
-			//printRoom();
-			//collectInput();
-			Scanner sc = new Scanner(System.in);
-			int index = 0;
-			String[] input = new String[8];
-			
-			while (sc.hasNext()) {
-				System.out.println("say something");
-				input[index] = sc.next();
-				System.out.println(input[index]);
-				System.out.println(index);
-				index = (1 + index);
-			}
-			sc.close();
-			
+			printRoom(p);
+			String[] input = collectInput();
 			
 			running = false;
+			
 		}
-		
 	}
 	
 	//
 	static void printRoom(Player player) {
-		System.out.println("play on player");
+		System.out.println(player.currentRoom.getShortDescription());
 	}
 	
 	//
 	private static String[] collectInput() {
-		String[] strang = new String[5];
-		return strang;
+		Scanner sc = new Scanner(System.in);
+		String[] input = new String[8];
+		
+		input = sc.nextLine().split("\\s");
+		
+		sc.close();
+		return input;
 	}
 	
 	//
