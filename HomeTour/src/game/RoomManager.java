@@ -3,6 +3,7 @@ package game;
 import java.util.HashMap;
 
 import fixtures.Room;
+import fixtures.Window;
 
 
 public class RoomManager {
@@ -124,6 +125,15 @@ public class RoomManager {
 				bedroom, livingRoom, attic);
 		upstairsLanding.fillExits(upstairsLandingExits, upstairsLanding.getCardinalExits());
 		
+		
+		// create objects
+		Window window = new Window(
+				"window", 
+				"A window.", 
+				"You can see a cat sitting in the window of the neighboring " +
+					"building.");
+		// put the objects in the rooms
+		livingRoom.setStuff(window);
 		
 		
 		// Initialize the first room

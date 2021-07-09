@@ -1,5 +1,8 @@
 package fixtures;
 
+import java.util.HashMap;
+import java.util.Set;
+
 public class Room extends Fixture{
 	
 	public static void main(String[] args) {
@@ -24,7 +27,7 @@ public class Room extends Fixture{
 	String westDescription;
 	
 	// the stuff you can interact with in a room
-	Interactable[] stuff;
+	HashMap<String, Fixture> stuff = new HashMap<>();
 	
 	// Constructor
 	public Room(String name, String shortDescription, String longDescription,
@@ -73,6 +76,21 @@ public class Room extends Fixture{
 		this.exits[cardinal][leftOrRight] = room;
 	}
 	
+	// place an object in a room so it can be interacted with
+	public void setStuff(Fixture object) {
+		this.stuff.put(object.getName(), object);
+	}
+	
+	// determine if object is in room and therefore within range of interaction
+	public boolean inRoom(String objectName) {
+		Set<String> keys = this.stuff.keySet();
+		for (String s: keys) {
+			if (s == objectName) {
+				return true;
+			}
+		}
+		return false;
+	}
 	
 	// returns an array of rooms
 	public Room[] roomArray(Room... rooms) {

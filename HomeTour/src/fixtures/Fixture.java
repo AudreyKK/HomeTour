@@ -15,4 +15,8 @@ public abstract class Fixture {
 		this.shortDescription = shortDesc;
 		this.longDescription = longDesc;
 	}
+	
+	public String getName() {
+		return this.name;
+	}
 }

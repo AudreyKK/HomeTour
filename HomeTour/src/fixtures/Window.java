@@ -9,4 +9,8 @@ public class Window extends Fixture implements Interactable{
 	public void interact() {
 		System.out.println(this.longDescription);
 	}
+	
+	public String getName() {
+		return this.name;
+	}
 }
