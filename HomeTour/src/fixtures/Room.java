@@ -23,6 +23,9 @@ public class Room extends Fixture{
 	String southDescription;
 	String westDescription;
 	
+	// the stuff you can interact with in a room
+	Interactable[] stuff;
+	
 	// Constructor
 	public Room(String name, String shortDescription, String longDescription,
 			String[] cardinalExits) {
@@ -43,6 +46,11 @@ public class Room extends Fixture{
 	//
 	public String getShortDescription() {
 		return this.shortDescription;
+	}
+	
+	// 
+	public String getLongDescription() {
+		return this.longDescription;
 	}
 	
 	//
