@@ -130,4 +130,17 @@ public class Room extends Fixture{
 	public Room getExit(int cardinalDirection, int leftOrRight) {
 		return this.exits[cardinalDirection][leftOrRight];
 	}
+	
+	// Does this exit exist? Returns true if cardinal direction value is present
+	public boolean exitExist(String direction) {
+		direction = direction.toUpperCase().intern();
+		for (int i = 0; i < this.cardinalExits.length; i++) {
+			if (this.cardinalExits[i] == direction) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
 }
+

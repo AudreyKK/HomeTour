@@ -31,7 +31,7 @@ public class RoomManager {
 		Room upstairsLanding = new Room(
 				"hallway", 
 				"A small hallway that appears to be the 2nd floor landing of a" +
-						"building.",
+						" building.",
 				"A short hallway at the top of a set of stairs. A mirror hangs" +
 						"on the wall to the south. At the end of the hall, to " +
 						" the north, there are stairs leading down. To the south"+
@@ -60,7 +60,7 @@ public class RoomManager {
 						"There is every kind of junk you could imagine in here. " +
 						"Old wooden speakers, croquet mallets, a supremely gross " +
 						"stuffed deer head, and who knows what else.",
-				new String[] {"S"}
+				new String[] {"E"}
 				);
 		
 		// kitchen
@@ -87,6 +87,17 @@ public class RoomManager {
 				new String[] {"W"}
 				);
 		
+		// foyer
+		Room foyer = new Room(
+				"foyer",
+				"A small entry hall.",
+				"A small entry hall at the bottom of the stairs. There looks to be" +
+						" a second apartment on this floor, and you can hear " +
+						"barking from within, and dog leashes hang on the wall by " +
+						" the front door to the west.",
+				new String[] {"E", "W"}
+				);
+		
 		// store the rooms in the room dictionary
 		this.rooms.put("bedroom", bedroom);
 		this.rooms.put("hallway", upstairsLanding);
@@ -108,6 +119,11 @@ public class RoomManager {
 		Room[] livingRoomExits = livingRoom.roomArray(upstairsLanding, bedroom2,
 				kitchen);
 		livingRoom.fillExits(livingRoomExits, livingRoom.getCardinalExits());
+		
+		Room[] upstairsLandingExits = upstairsLanding.roomArray(foyer, 
+				bedroom, livingRoom, attic);
+		upstairsLanding.fillExits(upstairsLandingExits, upstairsLanding.getCardinalExits());
+		
 		
 		
 		// Initialize the first room
