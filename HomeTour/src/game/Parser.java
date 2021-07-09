@@ -1,5 +1,6 @@
 package game;
 
+import fixtures.Window;
 
 public class Parser {
 
@@ -14,7 +15,7 @@ public class Parser {
 	
 	// collection of interaction commands
 	public static String[] interactions = 
-		{"INTERACT", "LOOK", "EXAMINE"};
+		{"INTERACT", "LOOK", "EXAMINE", "INSPECT"};
 	
 	// collection of the cardinal directions
 	public static String[] cardinalDirections = 
@@ -129,8 +130,34 @@ public class Parser {
 					}
 				}
 			}
+		} // end of if in action array
+		else if (inArray(action, interactions)) {
+			if (command.length == 1) {
+				switch(action) {
+					case("EXAMINE"): // let it fall through
+					case("INSPECT"):
+					case("LOOK"): {
+						System.out.print(player.getCurrentRoom().getLongDescription());
+					}
+				}
+			} else if (command.length == 2) {
+				switch(object) {
+					case("WINDOW"): {
+						if (player.getCurrentRoom().inRoom("window")) {
+							Window temp = (Window) player.getCurrentRoom().getStuff().get("window");
+							temp.interact();
+								
+						} else {
+							System.out.println("That's not in this room.");
+						}
+						break;
+					}
+				}
+			}
 		} else if (action == "QUIT") {
 			Main.endGame();
+		} else {
+			System.out.println("I didn't understand that command.");
 		}
 		
 		

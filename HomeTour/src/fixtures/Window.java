@@ -13,4 +13,8 @@ public class Window extends Fixture implements Interactable{
 	public String getName() {
 		return this.name;
 	}
+	
+	public String getLonDescription() {
+		return this.longDescription;
+	}
 }

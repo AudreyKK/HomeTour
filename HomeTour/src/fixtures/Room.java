@@ -27,7 +27,7 @@ public class Room extends Fixture{
 	String westDescription;
 	
 	// the stuff you can interact with in a room
-	HashMap<String, Fixture> stuff = new HashMap<>();
+	HashMap<String, Object> stuff = new HashMap<>();
 	
 	// Constructor
 	public Room(String name, String shortDescription, String longDescription,
@@ -90,6 +90,11 @@ public class Room extends Fixture{
 			}
 		}
 		return false;
+	}
+	
+	// returns a dictionary
+	public HashMap<String, Object> getStuff() {
+		return this.stuff;
 	}
 	
 	// returns an array of rooms

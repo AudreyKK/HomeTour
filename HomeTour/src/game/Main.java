@@ -7,6 +7,7 @@ import game.Parser;
 
 public class Main {
 	private static boolean running = true;
+	private static String spaces = "\n\n\n";
 	
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
@@ -32,7 +33,9 @@ public class Main {
 	
 	//
 	static void printRoom(Player player) {
+		System.out.println(spaces);
 		System.out.println(player.getCurrentRoom().getShortDescription());
+		System.out.println(spaces);
 	}
 	
 	//
