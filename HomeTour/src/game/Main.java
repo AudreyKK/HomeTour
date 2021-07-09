@@ -14,9 +14,11 @@ public class Main {
 		RoomManager rm = new RoomManager();
 		Player p = new Player();
 		Parser parser = new Parser();
+		Menu menu = new Menu();
 		
 		rm.mapInitializer();
 		p.setCurrentRoom(rm.startingRoom);
+		menu.mainMenu();
 		
 		while(running) {
 			
@@ -28,6 +30,7 @@ public class Main {
 			
 			
 		}
+		System.out.println("Thank you for playing.");
 		sc.close();
 	}
 	

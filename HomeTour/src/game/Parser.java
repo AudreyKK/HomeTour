@@ -102,7 +102,10 @@ public class Parser {
 						break;
 					}
 					case("EAST"): {
-						if (player.getCurrentRoom().exitExist("E")) {
+						if (player.getCurrentRoom().getName().intern() == "porch") {
+							System.out.println("This is a house tour. Not an \n" +
+									"outside the house tour.");
+						} else if (player.getCurrentRoom().exitExist("E")) {
 							player.setCurrentRoom(
 									player.getCurrentRoom().getExit(1));
 						} else {
