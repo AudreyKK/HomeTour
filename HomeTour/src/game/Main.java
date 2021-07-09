@@ -3,21 +3,26 @@ package game;
 import java.util.Scanner;
 import game.Player;
 import game.RoomManager;
+import game.Parser;
 
 public class Main {
+	private static boolean running = true;
 	
 	public static void main(String[] args) {
-		boolean running = true;
 		RoomManager rm = new RoomManager();
 		Player p = new Player();
+		Parser parser = new Parser();
 		
 		rm.mapInitializer();
 		p.currentRoom = rm.startingRoom;
 		
 		while(running) {
 			
-			printRoom(p);
-			String[] input = collectInput();
+			printRoom(p); // display state
+			String[] input = collectInput(); // collect input
+			// process input
+			// update state
+			// repeat 
 			
 			running = false;
 			
@@ -40,9 +45,7 @@ public class Main {
 		return input;
 	}
 	
-	//
-	private static void parse(String[] command, Player player) {
-		System.out.println("parse on parser");
-	}
-
+	public static void endGame() {
+		running = false;
+	};
 }
